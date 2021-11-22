@@ -1,5 +1,7 @@
 package com.clearsky77.retrofitlibrarytest_20211122.api
 
+import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -12,7 +14,7 @@ interface ServerAPIService {
     fun postRequestLogin(
         @Field("email") email: String,
         @Field("password") pw: String,
-    )
+    ) : Call<BasicResponse> // 호출 답으로 뭘 받을지 명시
 
 
 }
