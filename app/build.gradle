@@ -6,6 +6,10 @@ plugins {
 android {
     compileSdk 31
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId "com.clearsky77.retrofitlibrarytest_20211122"
         minSdk 21
