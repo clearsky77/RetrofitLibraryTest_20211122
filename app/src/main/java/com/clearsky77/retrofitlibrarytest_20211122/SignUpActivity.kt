@@ -3,6 +3,7 @@ package com.clearsky77.retrofitlibrarytest_20211122
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.clearsky77.retrofitlibrarytest_20211122.databinding.ActivitySignUpBinding
 import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
@@ -23,6 +24,9 @@ class SignUpActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.edtEmail.addTextChangedListener {
+            Log.d("입력된 내용", it.toString())
+        }
 
         binding.btnEmailCheck.setOnClickListener {
 
@@ -33,18 +37,14 @@ class SignUpActivity : BaseActivity() {
                     call: Call<BasicResponse>,
                     response: Response<BasicResponse>
                 ) {
-
                     if(response.isSuccessful) {
                         binding.txtEmailCheckResult.text = "사용해도 좋은 이메일입니다."
                     }else{
                         binding.txtEmailCheckResult.text = "다른 이메일을 사용해주세요."
                     }
-
-
                 }
 
                 override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-
                 }
 
             } )
