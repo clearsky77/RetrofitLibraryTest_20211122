@@ -5,20 +5,20 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.clearsky77.retrofitlibrarytest_20211122.databinding.ActivityMainBinding
+import com.clearsky77.retrofitlibrarytest_20211122.databinding.ActivityLoginBinding
 import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : BaseActivity() {
+class LoginActivity : BaseActivity() {
 
-    lateinit var binding: ActivityMainBinding // xml에 <layout>달아야 찾아진다.
+    lateinit var binding: ActivityLoginBinding // xml에 <layout>달아야 찾아진다.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         setupEvents()
         setValues()
     }
