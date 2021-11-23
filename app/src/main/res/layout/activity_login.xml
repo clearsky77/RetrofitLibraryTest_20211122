@@ -45,5 +45,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="회원가입" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="소셜로그인으로 편하게 로그인 하세요"/>
+            <ImageView
+                android:id="@+id/btnFacebooLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+        </LinearLayout>
+
     </LinearLayout>
 </layout>
