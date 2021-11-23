@@ -2,10 +2,7 @@ package com.clearsky77.retrofitlibrarytest_20211122.api
 
 import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface ServerAPIService { // 왜 인터페이스? Retrofit에 create메소드가 그렇게 받기 때문에
 
@@ -20,10 +17,17 @@ interface ServerAPIService { // 왜 인터페이스? Retrofit에 create메소드
     //    회원가입 기능
     @FormUrlEncoded// post, put, patch는 추가해줘야한다.
     @PUT("/user")
-    fun putRequestS(
+    fun putRequestSignUp(
         @Field("email") email: String, // form data
         @Field("password") pw : String,
         @Field("nick_name") nick: String,
+    ) : Call<BasicResponse>
+
+    //    중복 확인 기능 - GET
+    @GET("/user/check")
+    fun getRequestDuplicatedCheck(
+        @Query("type") type: String,
+        @Query("value") value: String,
     ) : Call<BasicResponse>
 
 }

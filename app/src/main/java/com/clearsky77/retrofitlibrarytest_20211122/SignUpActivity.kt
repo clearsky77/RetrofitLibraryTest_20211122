@@ -1,6 +1,5 @@
 package com.clearsky77.retrofitlibrarytest_20211122
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -23,13 +22,35 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+
+        binding.btnEmailCheck.setOnClickListener {
+
+            val email = binding.edtEmail.text.toString()
+
+            apiService.getRequestDuplicatedCheck("EMAIL", email).enqueue( object : Callback<BasicResponse> {
+                override fun onResponse(
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
+                ) {
+
+                }
+
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                }
+
+            } )
+
+        }
+
         binding.btnSignUp.setOnClickListener {
 
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
             val nickname = binding.edtNickname.text.toString()
 
-            apiService.putRequestS(email, password, nickname).enqueue(object : Callback<BasicResponse>{
+            apiService.putRequestSignUp(email, password, nickname).enqueue(object : Callback<BasicResponse>{
                 override fun onResponse(
                     call: Call<BasicResponse>,
                     response: Response<BasicResponse>
