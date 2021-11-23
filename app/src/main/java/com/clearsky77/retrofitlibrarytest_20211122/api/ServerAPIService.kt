@@ -30,4 +30,6 @@ interface ServerAPIService { // 왜 인터페이스? Retrofit에 create메소드
         @Query("value") value: String,
     ) : Call<BasicResponse>
 
+
+
 }
