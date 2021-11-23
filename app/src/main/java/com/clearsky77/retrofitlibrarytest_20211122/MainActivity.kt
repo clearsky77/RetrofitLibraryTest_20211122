@@ -42,7 +42,11 @@ class MainActivity : BaseActivity() {
                     if (response.isSuccessful) {
                         val basicResponse =  response.body()!!
 
-                        Toast.makeText(mContext, basicResponse.message, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(mContext, basicResponse.message, Toast.LENGTH_SHORT).show()
+
+                        val userNickname = basicResponse.data.user.nickname
+                        Toast.makeText(mContext, "${userNickname}님 환영합니다.", Toast.LENGTH_SHORT).show()
+
                     }
                     else {
 
