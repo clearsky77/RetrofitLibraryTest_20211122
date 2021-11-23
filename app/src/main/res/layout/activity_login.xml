@@ -55,11 +55,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="소셜로그인으로 편하게 로그인 하세요"/>
-            <ImageView
-                android:id="@+id/btnFacebooLogin"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btnFacebookLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="페북로그인" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnKakaoLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="카톡로그인" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
