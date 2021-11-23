@@ -17,6 +17,8 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+        binding.btnSignUp.setOnClickListener {
+        }
 
     }
 
