@@ -14,6 +14,7 @@ import retrofit2.Response
 class SignUpActivity : BaseActivity() {
 
     lateinit var binding : ActivitySignUpBinding
+    var isDuplOk = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +26,9 @@ class SignUpActivity : BaseActivity() {
     override fun setupEvents() {
 
         binding.edtEmail.addTextChangedListener {
-            Log.d("입력된 내용", it.toString())
+//            Log.d("입력된 내용", it.toString())
+            // 재검사 요청
+            binding.txtEmailCheckResult.text = "이메일 중복검사를 해주세요."
         }
 
         binding.btnEmailCheck.setOnClickListener {
@@ -39,8 +42,10 @@ class SignUpActivity : BaseActivity() {
                 ) {
                     if(response.isSuccessful) {
                         binding.txtEmailCheckResult.text = "사용해도 좋은 이메일입니다."
+                        isDuplOk = true
                     }else{
                         binding.txtEmailCheckResult.text = "다른 이메일을 사용해주세요."
+                        isDuplOk = false
                     }
                 }
 
@@ -52,6 +57,11 @@ class SignUpActivity : BaseActivity() {
         }
 
         binding.btnSignUp.setOnClickListener {
+
+            if(!isDuplOk){
+                Toast.makeText(mContext, "이메일 중복검사를 해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
