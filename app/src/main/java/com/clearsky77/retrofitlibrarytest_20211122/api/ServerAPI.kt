@@ -7,7 +7,7 @@ class ServerAPI {
     // Retrofit 타입 객체를 하나만 생성하여 모두가 공유한다. 싱글톤.
     companion object{
 
-        private var BASE_URL = "http://3.34.159.73"
+        private var BASE_URL = "https://api.gudoc.in"
 //        private var BASE_URL = "https://keepthetime.xyz"
         private var retrofit: Retrofit? = null // 앱이 처음 켜질 때는 없다 => 한 번만 만들고 함수를 통해 공유
 
