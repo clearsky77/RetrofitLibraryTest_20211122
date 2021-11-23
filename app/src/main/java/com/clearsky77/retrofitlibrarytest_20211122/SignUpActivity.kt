@@ -2,6 +2,7 @@ package com.clearsky77.retrofitlibrarytest_20211122
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.clearsky77.retrofitlibrarytest_20211122.databinding.ActivitySignUpBinding
 import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
@@ -32,7 +33,10 @@ class SignUpActivity : BaseActivity() {
                     call: Call<BasicResponse>,
                     response: Response<BasicResponse>
                 ) {
-
+                    if(response.isSuccessful){
+                        val br = response.body()!!
+                        Log.d("가입한 사람의 토큰",br.data.token)
+                    }
                 }
 
                 override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
