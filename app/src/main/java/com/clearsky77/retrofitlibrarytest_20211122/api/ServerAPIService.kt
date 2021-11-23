@@ -30,6 +30,13 @@ interface ServerAPIService { // 왜 인터페이스? Retrofit에 create메소드
         @Query("value") value: String,
     ) : Call<BasicResponse>
 
-
+    //    소셜로그인 기능 - POST
+    @FormUrlEncoded
+    @POST("/user/social")
+    fun postRequestSocialLogin(
+        @Field("provider") provider: String,
+        @Field("uid") uid: String,
+        @Field("nick_name") name: String,
+    ) : Call<BasicResponse>
 
 }

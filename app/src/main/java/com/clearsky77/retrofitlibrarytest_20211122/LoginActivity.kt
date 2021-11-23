@@ -76,7 +76,7 @@ class LoginActivity : BaseActivity() {
             if(UserApiClient.instance.isKakaoTalkLoginAvailable(mContext)){
                 UserApiClient.instance.loginWithKakaoTalk(mContext){ token, error ->
                     if(error!=null){
-                        Log.e("카카오 로그인","실패")
+                        Log.e("카카오 로그인","실패-loginWithKakaoTalk")
                     }else if(token!=null){
                         Log.e("카카오 로그인","")
                         Log.e("카카오 로그인",token.accessToken)
@@ -87,7 +87,7 @@ class LoginActivity : BaseActivity() {
             }else{
                 UserApiClient.instance.loginWithKakaoAccount(mContext){token, error ->
                     if(error!=null){
-                        Log.e("카카오 로그인","실패")
+                        Log.e("카카오 로그인","실패-loginWithKakaoAccount")
                     }else if(token!=null){
                         Log.e("카카오 로그인","성공")
                         Log.e("카카오 로그인",token.accessToken)
@@ -99,6 +99,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        UserApiClient.instance.logout {  }
         getKeyHash()
     }
 
@@ -126,6 +127,23 @@ class LoginActivity : BaseActivity() {
                         "\n회원번호: ${user.id}" +
                         "\n이메일: ${user.kakaoAccount?.email}" +
                         "\n닉네임: ${user.kakaoAccount?.profile?.nickname}")
+                apiService.postRequestSocialLogin(
+                    "kakao",
+                    user.id.toString(),
+                    user.kakaoAccount?.profile?.nickname!!).enqueue(object : Callback<BasicResponse> {
+                    override fun onResponse(
+                        call: Call<BasicResponse>,
+                        response: Response<BasicResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val br = response.body()!!
+                            Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+                    }
+                } )
             }
 
         }
