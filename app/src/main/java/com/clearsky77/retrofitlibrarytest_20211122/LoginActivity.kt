@@ -51,7 +51,9 @@ class LoginActivity : BaseActivity() {
 
                         val userNickname = basicResponse.data.user.nickname
                         Toast.makeText(mContext, "${userNickname}님 환영합니다!", Toast.LENGTH_SHORT).show()
-
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
+                        finish() // 로그인 화면은 필요없다.
                     }
                     else {
 
@@ -99,7 +101,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setValues() {
-        UserApiClient.instance.logout {  }
+//        UserApiClient.instance.logout {  } // 혹시 로그인에 문제가 되면 로그아웃 후 테스트 하자.
         getKeyHash()
     }
 
@@ -138,6 +140,9 @@ class LoginActivity : BaseActivity() {
                         if (response.isSuccessful) {
                             val br = response.body()!!
                             Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+                            val myIntent = Intent(mContext, MainActivity::class.java)
+                            startActivity(myIntent)
+                            finish() // 로그인 화면은 필요없다.
                         }
                     }
 
