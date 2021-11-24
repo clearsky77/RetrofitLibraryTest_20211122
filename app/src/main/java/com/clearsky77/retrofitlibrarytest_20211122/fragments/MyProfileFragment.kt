@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.clearsky77.retrofitlibrarytest_20211122.R
 import com.clearsky77.retrofitlibrarytest_20211122.databinding.FragmentReviewListBinding
 
-class myProfileFragment : Fragment(){
+class MyProfileFragment : Fragment(){
 
     lateinit var binding : FragmentReviewListBinding
 
