@@ -1,19 +1,16 @@
 package com.clearsky77.retrofitlibrarytest_20211122.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.clearsky77.retrofitlibrarytest_20211122.R
-import com.clearsky77.retrofitlibrarytest_20211122.databinding.FragmentReviewListBinding
-import com.clearsky77.retrofitlibrarytest_20211122.utils.ContextUtil
+import com.clearsky77.retrofitlibrarytest_20211122.databinding.FragmentMyProfileBinding
 
 class MyProfileFragment : BaseFragment(){
 
-    lateinit var binding : FragmentReviewListBinding
+    lateinit var binding : FragmentMyProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
