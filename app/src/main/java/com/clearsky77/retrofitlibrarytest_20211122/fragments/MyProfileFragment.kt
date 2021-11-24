@@ -11,7 +11,7 @@ import com.clearsky77.retrofitlibrarytest_20211122.R
 import com.clearsky77.retrofitlibrarytest_20211122.databinding.FragmentReviewListBinding
 import com.clearsky77.retrofitlibrarytest_20211122.utils.ContextUtil
 
-class MyProfileFragment : Fragment(){
+class MyProfileFragment : BaseFragment(){
 
     lateinit var binding : FragmentReviewListBinding
 
@@ -26,6 +26,15 @@ class MyProfileFragment : Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Log.d("토큰값 확인", ContextUtil.getToken(requireContext()))
+        setupEvents()
+        setValues()
     }
+
+    override fun setupEvents() {
+    }
+
+    override fun setValues() {
+    }
+
+
 }
