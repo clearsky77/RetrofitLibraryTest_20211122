@@ -51,6 +51,10 @@ class LoginActivity : BaseActivity() {
 
                         val userNickname = basicResponse.data.user.nickname
                         Toast.makeText(mContext, "${userNickname}님 환영합니다!", Toast.LENGTH_SHORT).show()
+
+                        //토큰값 추출
+
+
                         val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
                         finish() // 로그인 화면은 필요없다.
