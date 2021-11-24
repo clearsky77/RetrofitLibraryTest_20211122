@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.clearsky77.retrofitlibrarytest_20211122.databinding.ActivityLoginBinding
 import com.clearsky77.retrofitlibrarytest_20211122.datas.BasicResponse
+import com.clearsky77.retrofitlibrarytest_20211122.utils.ContextUtil
 import com.kakao.sdk.user.UserApi
 import com.kakao.sdk.user.UserApiClient
 import org.json.JSONObject
@@ -53,7 +54,7 @@ class LoginActivity : BaseActivity() {
                         Toast.makeText(mContext, "${userNickname}님 환영합니다!", Toast.LENGTH_SHORT).show()
 
                         //토큰값 추출
-
+                        ContextUtil.setToken(mContext, basicResponse.data.token)
 
                         val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
@@ -144,6 +145,10 @@ class LoginActivity : BaseActivity() {
                         if (response.isSuccessful) {
                             val br = response.body()!!
                             Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+
+                            //토큰값 추출
+                            ContextUtil.setToken(mContext, br.data.token)
+
                             val myIntent = Intent(mContext, MainActivity::class.java)
                             startActivity(myIntent)
                             finish() // 로그인 화면은 필요없다.
